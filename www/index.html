@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="bookStoreApp" ng-init="order='titulo'">
+<head>
+	<meta charset="UTF-8">
+	<title>Book Store App</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 product-title>Galeria de libros</h1>
+    <div class="row">
+        <div class="col-md-1">
+			<h3><strong>Buscar un libro</strong></h3>
+		</div>
+		<br>
+		<form name="buscarForm">
+			<label>Nombre:
+				<input type="text" name="searchName" ng-model="search"/>
+			</label>
+			<label>Ordenar por:
+				<select name="orderName" ng-model="order">
+					<option value="titulo">Titulo</option>
+  					<option value="editorial">Editorial</option>
+				</select>			
+			</label>	
+		</form>
+        <div class="container" ng-controller="StoreController">
+	   
+
+	       <div class="container" >
+        
+		<div class="list-group">
+			 <div class="list-group-item"  ng-repeat="product in products | filter:search | orderBy:order">
+                    <div class="gallery">
+				        <img ng-src="{{product.img}}">
+			         </div>
+                <h2>{{product.titulo}}</h2>
+			     <h3>{{product.autor}}</h3>
+			     <h4>{{product.editorial}}</h4>
+			     <p>{{product.descripcion}}</p>
+			</div>
+		  </div>	
+	   </div>
+    </div> 
+</div> 
+<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
